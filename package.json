@@ -2,6 +2,9 @@
   "name": "OpenWebUIReact",
   "version": "0.0.2",
   "private": true,
+  "author": "Alexander Bykov",
+  "license": "MIT",
+  "copyright": "2024",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",

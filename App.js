@@ -23,6 +23,7 @@ import WelcomeScreen from './components/WelcomeScreen';
 import MenuModal from './components/MenuModal';
 import AddServerModal from './components/AddServerModal'; // Укажите правильный путь
 import { APP_VERSION } from './src/constants/version';
+import packageInfo from './package.json';
 // import Icon from 'react-native-vector-icons/Ionicons'; // Replace 'FontAwesome' with the desired icon library
 
 const App = () => {
@@ -264,14 +265,13 @@ const App = () => {
                 </View>
                 <Icon name="chevron-forward" size={20} color="rgba(255,255,255,0.5)" />
               </TouchableOpacity>
-  
-              <View style={styles.aboutCard}>
-                <Icon name="person" size={24} color="#fff" style={styles.aboutCardIcon} />
-                <View style={styles.aboutCardContent}>
-                  <Text style={styles.aboutCardTitle}>Автор</Text>
-                  <Text style={styles.aboutCardSubtitle}>Alexander Bykov</Text>
-                </View>
-              </View>
+            </View>
+
+            {/* Добавляем информацию об авторе внизу */}
+            <View style={styles.aboutFooter}>
+              <Text style={styles.aboutCopyright}>
+               Made with ❤️ {packageInfo.copyright}, {packageInfo.author} 
+              </Text>
             </View>
           </Animated.View>
         </ScrollView>
@@ -683,15 +683,13 @@ const styles = StyleSheet.create({
   },
   aboutFooter: {
     marginTop: 'auto',
-    marginBottom: 40,
+    paddingVertical: 20,
     alignItems: 'center',
   },
-  aboutAuthor: {
-    fontSize: 16,
-    marginBottom: 8,
-  },
-  aboutWebsite: {
+  aboutCopyright: {
     fontSize: 14,
+    color: 'rgba(255, 255, 255, 0.7)',
+    textAlign: 'center',
   },
   aboutLogo: {
     width: 120,
