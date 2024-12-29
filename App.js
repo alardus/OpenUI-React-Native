@@ -22,6 +22,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import WelcomeScreen from './components/WelcomeScreen';
 import MenuModal from './components/MenuModal';
 import AddServerModal from './components/AddServerModal'; // Укажите правильный путь
+import { APP_VERSION } from './src/constants/version';
 // import Icon from 'react-native-vector-icons/Ionicons'; // Replace 'FontAwesome' with the desired icon library
 
 const App = () => {
@@ -242,7 +243,7 @@ const App = () => {
                 />
               </View>
               <Text style={styles.aboutAppName}>OpenUI</Text>
-              <Text style={styles.aboutVersion}>Версия 0.0.1</Text>
+              <Text style={styles.aboutVersion}>Версия {APP_VERSION}</Text>
             </View>
   
             {/* Описание */}
@@ -295,9 +296,19 @@ const App = () => {
           <Icon name="menu" size={30} color={themeColors.iconColor} />
         </TouchableOpacity>
         
-        <Text style={[styles.headerTitle, { color: themeColors.textColor }]}>
-          OpenUI
-        </Text>
+        <View style={[styles.headerTitleContainer, { alignItems: 'center' }]}>
+          <Text style={[styles.headerTitle, { color: themeColors.textColor }]}>
+            {currentAddress ? 
+              addresses.find(addr => addr.host === currentAddress)?.title || 'OpenUI' 
+              : 'OpenUI'
+            }
+          </Text>
+          {currentAddress && (
+            <Text style={[styles.headerSubtitle, { color: themeColors.secondaryText }]}>
+              {currentAddress}
+            </Text>
+          )}
+        </View>
       </View>
 
       {currentAddress ? (
@@ -837,6 +848,21 @@ const styles = StyleSheet.create({
   aboutCardSubtitle: {
     fontSize: 14,
     color: 'rgba(255, 255, 255, 0.7)',
+  },
+  headerTitleContainer: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    paddingHorizontal: 40,
+  },
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  headerSubtitle: {
+    fontSize: 12,
+    marginTop: 2,
   },
 });
 

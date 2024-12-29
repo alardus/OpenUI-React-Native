@@ -1,13 +1,16 @@
 {
   "name": "OpenWebUIReact",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "sync-version": "node scripts/sync-version.js",
+    "prebuild": "npm run sync-version",
+    "prestart": "npm run sync-version"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^2.1.0",
@@ -41,7 +44,8 @@
     "prettier": "2.8.8",
     "react-native-svg-transformer": "^1.5.0",
     "react-test-renderer": "18.3.1",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "plist": "^3.1.0"
   },
   "engines": {
     "node": ">=18"

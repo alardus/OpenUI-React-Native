@@ -1,3 +1,12 @@
+import groovy.json.JsonSlurper
+
+def getVersionFromPackageJson() {
+    def packageJson = new JsonSlurper().parse(file("../../package.json"))
+    return packageJson.version.tokenize('.')
+}
+
+def version = getVersionFromPackageJson()
+
 apply plugin: "com.android.application"
 apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.facebook.react"
@@ -83,8 +92,8 @@ android {
         applicationId "com.openwebuireact"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode version[0].toInteger() * 10000 + version[1].toInteger() * 100 + version[2].toInteger()
+        versionName "${version[0]}.${version[1]}.${version[2]}"
     }
     signingConfigs {
         debug {
