@@ -125,15 +125,15 @@ const MenuModal = ({
             <View style={styles.menuActions}>
               <TouchableOpacity
                 style={styles.menuActionButton}
-                onPress={onAddServer}
-              >
-                <Icon name="add-circle-outline" size={24} color="#fff" />
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.menuActionButton}
                 onPress={onShowAbout}
               >
                 <Icon name="information-circle-outline" size={24} color="#fff" />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.menuActionButton}
+                onPress={onAddServer}
+              >
+                <Icon name="add-circle-outline" size={24} color="#fff" />
               </TouchableOpacity>
             </View>
           </View>

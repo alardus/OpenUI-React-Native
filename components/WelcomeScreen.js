@@ -7,7 +7,8 @@ import {
   Dimensions, 
   Animated, 
   Platform,
-  SafeAreaView 
+  SafeAreaView,
+  Image
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -85,7 +86,11 @@ const WelcomeScreen = ({ onAddServer }) => {
       <SafeAreaView style={styles.safeArea}>
         <Animated.View style={[styles.content, { opacity: fadeAnim }]}>
           <View style={styles.iconContainer}>
-            <Icon name="server-outline" size={80} color="#fff" />
+            <Image 
+              source={require('../assets/app-icon.png')} 
+              style={styles.appIcon}
+              resizeMode="contain"
+            />
           </View>
           
           <Text style={styles.title}>Добро пожаловать в OpenUI</Text>
@@ -94,7 +99,6 @@ const WelcomeScreen = ({ onAddServer }) => {
           </Text>
 
           <TouchableOpacity style={styles.button} onPress={onAddServer}>
-            <Icon name="add-circle-outline" size={24} color="#fff" style={styles.buttonIcon} />
             <Text style={styles.buttonText}>Добавить сервер</Text>
           </TouchableOpacity>
         </Animated.View>
@@ -176,13 +180,14 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(255, 255, 255, 0.3)',
   },
-  buttonIcon: {
-    marginRight: 12,
-  },
   buttonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: '600',
+  },
+  appIcon: {
+    width: 80,
+    height: 80,
   },
 });
 

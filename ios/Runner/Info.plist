@@ -21,5 +21,9 @@
     <false/>
     <key>UIScrollViewContentInsetAdjustmentBehavior</key>
     <string>never</string>
+    <key>CFBundleName</key>
+    <string>PocketLlama</string>
+    <key>CFBundleDisplayName</key>
+    <string>PocketLlama</string>
 </dict>
 </plist> 
